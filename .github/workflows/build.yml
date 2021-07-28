@@ -23,7 +23,7 @@ jobs:
       run: dotnet tool install --global dotnet-mgcb --version 3.8.0.1641
 
     - name: Build MGCB
-      run: mgcb .\font.mgcb
+      run: mgcb ./font.mgcb
 
     - uses: actions/upload-artifact@v2
       name: Upload Artifacts
