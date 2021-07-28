@@ -1,0 +1,32 @@
+name: build fonts
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build MGCB
+    run-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Install MGCB
+      run: dotnet tool install --global dotnet-mgcb --version 3.8.0.1641
+
+    - name: Build MGCB
+      run: mgcb .\font.mgcb
+
+    - uses: actions/upload-artifact@v2
+      name: Upload Artifacts
+      with:
+        name: artifacts
+        path: ./Artifacts
