@@ -22,17 +22,16 @@ jobs:
     - name: Install MGCB
       run: dotnet tool install --global dotnet-mgcb --version 3.8.0.1641
 
-    - name: Build MGCB
-      continue-on-error: true
-      run: mgcb ./font.mgcb
-
     - name: Cache multiple paths
       continue-on-error: true
       uses: actions/cache@v2
       with:
-        path: obj
+        path: ./obj
         key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
+    - name: Build MGCB
+      continue-on-error: true
+      run: mgcb ./font.mgcb
 
     - uses: actions/upload-artifact@v2
       name: Upload Artifacts
