@@ -51,9 +51,13 @@ with.
     See the documentation for more information.
     -->
     <CharacterRegions>
-      <CharacterRegion>
+      <!-- <CharacterRegion>
         <Start>&#32;</Start>
         <End>&#126;</End>
+      </CharacterRegion> -->
+      <CharacterRegion>
+        <Start>&#x0020;</Start>
+        <End>&#xFFEE;</End>
       </CharacterRegion>
     </CharacterRegions>
   </Asset>
